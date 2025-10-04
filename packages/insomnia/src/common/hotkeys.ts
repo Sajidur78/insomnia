@@ -17,6 +17,7 @@ export const keyboardShortcutDescriptions: Record<KeyboardShortcut, string> = {
   showAutocomplete: 'Show Autocomplete',
   request_send: 'Send Request',
   request_showOptions: 'Send Request (Options)',
+  request_rename: 'Rename Request',
   environment_showEditor: 'Show Environment Editor',
   environment_showSwitchMenu: 'Switch Environments',
   request_toggleHttpMethodMenu: 'Change HTTP Method',
@@ -85,6 +86,10 @@ const defaultRegistry: HotKeyRegistry = {
   request_showOptions: {
     macKeys: [{ shift: true, meta: true, keyCode: keyboardKeys.enter.keyCode }],
     winLinuxKeys: [{ ctrl: true, shift: true, keyCode: keyboardKeys.enter.keyCode }],
+  },
+  request_rename: {
+    macKeys: [{ keyCode: keyboardKeys.f2.keyCode }],
+    winLinuxKeys: [{ keyCode: keyboardKeys.f2.keyCode }],
   },
   environment_showEditor: {
     macKeys: [{ meta: true, keyCode: keyboardKeys.e.keyCode }],

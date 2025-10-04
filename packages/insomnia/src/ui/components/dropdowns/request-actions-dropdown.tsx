@@ -239,6 +239,7 @@ export const RequestActionsDropdown = ({
         {
           id: 'Rename',
           name: 'Rename',
+          hint: hotKeyRegistry.request_rename,
           action: onRename,
           icon: 'edit',
         },

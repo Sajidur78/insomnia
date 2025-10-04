@@ -399,6 +399,17 @@ const Debug = () => {
         setIsRequestSettingsModalOpen(true);
       }
     },
+    request_rename: () => {
+      if (activeRequest && requestId) {
+        showModal(PromptModal, {
+          title: `Rename ${activeRequest.name}`,
+          defaultValue: activeRequest.name,
+          onComplete(newName: string) {
+            patchRequest(requestId, { name: newName });
+          },
+        });
+      }
+    },
     request_showDelete: () => {
       if (activeRequest && requestId) {
         showModal(AskModal, {

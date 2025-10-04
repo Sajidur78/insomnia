@@ -38,6 +38,7 @@ export type KeyboardShortcut =
   | 'showAutocomplete'
   | 'request_send'
   | 'request_showOptions'
+  | 'request_rename'
   | 'environment_showEditor'
   | 'environment_showSwitchMenu'
   | 'request_toggleHttpMethodMenu'
