@@ -233,6 +233,11 @@ test.describe('pre-request features tests', () => {
     }
   });
   test('send request with content type', async ({ page }) => {
+    await page.getByTestId('settings-button').click();
+    await page.getByTestId('dataFolders').click();
+    await page.getByTestId('dataFolders').fill(process.cwd());
+    await page.getByTestId('dataFolders-btn').click();
+    await page.getByRole('button', { name: '' }).click();
     const statusTag = page.locator('[data-testid="response-status-tag"]:visible');
     const responseBody = page.getByTestId('response-pane').getByTestId('CodeEditor').locator('.CodeMirror-line');
 
@@ -634,15 +639,16 @@ test.describe('unhappy paths', () => {
   test('custom errors are returned', async ({ page }) => {
     await page.getByLabel('Request Collection').getByTestId('echo pre-request script result').press('Enter');
 
-    // set request body
-    await page.getByRole('tab', { name: 'Body' }).click();
-    await page.getByRole('button', { name: 'Body' }).click();
-    await page.getByRole('option', { name: 'JSON' }).click();
-
     // enter script
     await page.getByRole('tab', { name: 'Scripts' }).click();
     const editor = page.getByTestId('CodeEditor').getByRole('textbox');
     await editor.fill(`throw Error('my custom error');`);
+    await page.getByText('throw Error').click();
+
+    // set request body
+    await page.getByRole('tab', { name: 'Body' }).click();
+    await page.getByRole('button', { name: 'Body' }).click();
+    await page.getByRole('option', { name: 'JSON' }).click();
 
     await page.getByRole('tab', { name: 'Body' }).click();
 
